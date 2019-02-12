@@ -1,4 +1,4 @@
-import { Block } from './block';
+ import { Block } from './block';
 import { Transaction } from './transaction';
 
 export class Blockchain {
@@ -6,4 +6,9 @@ export class Blockchain {
     public pedingTransactions: Transaction[] = [];
     public nodeUrl: string;
     public networkNodes: string[] = [];
+
+    constructor(GENESIS_BLOCK: Block){
+        this.chain = [GENESIS_BLOCK];
+        this.nodeUrl = uuid();
+    }
 }
