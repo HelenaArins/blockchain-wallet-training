@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, Inject } from '@angular/core';
 import { Blockchain } from './models/blockchain';
 import { Block } from './models/block';
 import { Transaction } from './models/transaction';
@@ -10,7 +10,7 @@ import { BlockData } from './models/block-data';
 export class BlockchainService {
   public blockchain: Blockchain;
 
-  constructor(@inject('GENESIS_BLOCK') GENESIS_BLOCK: Block) { 
+  constructor(@Inject('GENESIS_BLOCK') GENESIS_BLOCK: Block) { 
     this.blockchain = new Blockchain(GENESIS_BLOCK );
   }
   list(): Block[]{
