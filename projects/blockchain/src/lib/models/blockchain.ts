@@ -56,4 +56,37 @@ export class Blockchain {
 
         return nonce.toString();
     }
+
+    validateBlock(block: Block, previusBlock: Block): boolean {
+        if(block.previousHash !== previusBlock.hash)
+            return false;
+
+        const validateBlockHash = this.hashBlock(block.previousHash, new BlockData(block), block.nonce) 
+
+        if(validateBlockHash !== block.hash){
+            return false;
+        }
+        
+        return block.hash.substr(0, this.dificulty) === this.chain[0].hash.substr(0, this.dificulty);
+    }
+
+    isValidChain(Blockchain: Blockchain): boolean{
+        const testChain = Blockchain.chain;
+        const invalidBlocks = testChain.filter((block,index) => {
+            const isSameHash = block.hash === this.chain[index].hash;
+            const isSamePreviousHash = block.previousHash === this.chain[index].previousHash;
+            return !isSameHash || !isSamePreviousHash || (index > 0 && !this.validateBlock(block, testChain[index-1]));
+        });
+        return invalidBlocks.length === 0;
+    }
+
+    addTransactionToPending(transaction: Transaction): number {
+        this.pedingTransactions.push(transaction);
+        return this.getLatesBlock().index + 1;
+    }
+
+    newTransaction(amount: number, sender: string, recipient: string): Transaction{
+        const transaction = new Transaction(amount, sender, recipient);
+        return transaction;
+    }
 }
