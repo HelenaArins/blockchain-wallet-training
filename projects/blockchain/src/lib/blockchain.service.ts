@@ -21,7 +21,7 @@ export class BlockchainService {
   }
   mine():boolean{
     const latesBlock = this.blockchain.getLatesBlock();
-    const previousHash = latesBlock.previousHash;
+    const previousHash = latesBlock.hash;
     const currentBlockData = new BlockData({
       transactions: this.blockchain.pedingTransactions, 
       index: latesBlock.index + 1

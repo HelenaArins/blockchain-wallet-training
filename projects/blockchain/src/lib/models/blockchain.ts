@@ -39,21 +39,20 @@ export class Blockchain {
     }
 
     hashBlock(previusHash: string, blockData: BlockData, nonce: string | number): string {
-        const data = previusHash + JSON.stringify(blockData) + nonce.toString;
+        const data = previusHash + JSON.stringify(blockData) + nonce.toString();
         const hash = sha256().update(data).digest("hex");
 
         return hash;
     }
 
-    proofOfWorkNonce(previusHash: string, currentBlockData: BlockData): string {
+    proofOfWorkNonce(previousHash: string, currentBlockData: BlockData): string {
         let nonce = 0;
-        let hash = this.hashBlock(previusHash, currentBlockData, nonce);
+        let hash = this.hashBlock(previousHash, currentBlockData, nonce);
 
-        while(hash.substring(0, this.dificulty) !== this.chain[0].hash.substring(0, this.dificulty) ){
+        while(hash.substr(0, this.dificulty) !== this.chain[0].hash.substr(0, this.difi     culty) ){
             nonce++;
-            hash = this.hashBlock(previusHash, currentBlockData, nonce);
+            hash = this.hashBlock(previousHash, currentBlockData, nonce);
         }
-
         return nonce.toString();
     }
 
