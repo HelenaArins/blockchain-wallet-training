@@ -8,7 +8,7 @@ import { sha256 } from 'hash.js';
 
 export class Blockchain {
     public chain: Block[];
-    public pedingTransactions: Transaction[] = [];
+    public pendingTransactions: Transaction[] = [];
     public nodeUrl: string;
     public networkNodes: string[] = [];
     private dificulty: number;
@@ -23,12 +23,12 @@ export class Blockchain {
         const newBlock = new Block(
             this.chain.length,
             Date.now(),
-            this.pedingTransactions,
+            this.pendingTransactions,
             nonce.toString(),
             hash,
             previusHash        
         )
-        this.pedingTransactions = [];
+        this.pendingTransactions = [];
         this.chain.push(newBlock);
 
         return newBlock;
@@ -49,7 +49,7 @@ export class Blockchain {
         let nonce = 0;
         let hash = this.hashBlock(previousHash, currentBlockData, nonce);
 
-        while(hash.substr(0, this.dificulty) !== this.chain[0].hash.substr(0, this.difi     culty) ){
+        while(hash.substr(0, this.dificulty) !== this.chain[0].hash.substr(0, this.dificulty) ){
             nonce++;
             hash = this.hashBlock(previousHash, currentBlockData, nonce);
         }
@@ -80,7 +80,7 @@ export class Blockchain {
     }
 
     addTransactionToPending(transaction: Transaction): number {
-        this.pedingTransactions.push(transaction);
+        this.pendingTransactions.push(transaction);
         return this.getLatesBlock().index + 1;
     }
 

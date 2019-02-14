@@ -23,7 +23,7 @@ export class BlockchainService {
     const latesBlock = this.blockchain.getLatesBlock();
     const previousHash = latesBlock.hash;
     const currentBlockData = new BlockData({
-      transactions: this.blockchain.pedingTransactions, 
+      transactions: this.blockchain.pendingTransactions, 
       index: latesBlock.index + 1
     } as Block);
     const nonce = this.blockchain.proofOfWorkNonce(previousHash, currentBlockData);

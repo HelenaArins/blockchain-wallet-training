@@ -1,7 +1,22 @@
-<button (click)="onMine()">Mine</button>
-<button (click)="onSend()"> Send</button>
+<h2>BlockChain {{isValued}}</h2>
 
+<header>
+  <h2 [ngClass]="{
+    'valid': isValid,
+    'invalid': !isValid
+  }">BlockChain {{isValid}}  <button (click)="onMine()">Mine</button>  </h2>
+  <div>
+    {{blockchain.pendingTransactions.length}} Pending Transaction
+  </div>
+  <nav>
+    <button [routerLink]="['send-transaction']">Send Transaction</button>    
+    <button [routerLink]="['balance']">Balance</button>
+    <button [routerLink]="['dashboard']">Dashoard</button>
+
+  </nav>
+</header>
+
+<router-outlet></router-outlet>
 <pre>
   {{blockchain | json}}
 </pre>
-<router-outlet></router-outlet>
