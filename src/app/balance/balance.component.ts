@@ -21,11 +21,10 @@ export class BalanceComponent implements OnInit {
   }
 
   getBalance(owner: string){
-    // this.owner = owner;
-    // this.value = 22;
-    if(!owner || owner === '') ///COnfirmar
-      return 0;
-
+    if(!owner || owner === ''){
+      this.value = 0;
+      return false;
+    }
     this.owner = owner;
     const initial = new Transaction(0, 'system', owner);
 
