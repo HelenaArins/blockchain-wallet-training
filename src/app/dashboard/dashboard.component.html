@@ -1,5 +1,10 @@
+
+<app-balance
+  [chain]="blockchain.chain">
+</app-balance>
+
 <div id="dashboard-wrapper">
-  <div *ngFor="let block of blockchain.chain">{{block.index}} <br>
+  <div *ngFor="let block of blockchain.chain"><br>
     <app-block [block]="block"></app-block>
   </div>
 </div>   

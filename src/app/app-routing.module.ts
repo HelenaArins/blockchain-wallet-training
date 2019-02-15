@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: 'send-transaction', component: SendTransactionComponent},
-  {path: 'balance', component: BalanceComponent},
   {path: 'dashboard', component: DashboardComponent}
 ];
 
