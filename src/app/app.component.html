@@ -1,22 +1,43 @@
+
 <header>
   <h2 [ngClass]="{
     'valid': isValid,
     'invalid': !isValid
   }">BlockChain {{isValid}}</h2>
-  
-  
-  <button tooltip="Minerar novo Bloco" (click)="onMine()">Mine</button>  
-  <div>
-    {{blockchain.pendingTransactions.length}} Pending Transaction
-  </div>
-  <nav>
-    <button [routerLink]="['send-transaction']">Send Transaction</button>    
-    <button [routerLink]="['dashboard']">Dashoard</button>
-
-  </nav>
 </header>
 
-<router-outlet></router-outlet>
-<pre>
-  {{blockchain | json}}
-</pre>
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <button type="button" class="btn btn-primary"tooltip="Minerar novo Bloco" (click)="onMine()">Mine</button>
+      <li class="nav-item">
+          <a class="nav-link" [routerLink]="['start']">Welcome</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['send-transaction']">Send Transaction</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [routerLink]="['dashboard']">Dashoard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['pending-transactions']" >Show Pending Transaction</a>
+      </li>
+    </ul> 
+  </div>
+  <div class="card-body">
+
+    <!-- <button type="button" class="btn btn-link" [routerLink]="['pending-transactions']" > {{blockchain.pendingTransactions.length}} Pending Transaction </button> -->
+    <h5 class="card-title"  [routerLink]="['pending-transactions']">{{blockchain.pendingTransactions.length}} Pending Transaction</h5>
+    <p class="card-text">     </p>
+
+      <!-- <a href="#" class="btn btn-primary" [routerLink]="['send-transaction']">Send Transaction</a>
+      <a href="#" class="btn btn-primary" [routerLink]="['dashboard']">Dashoard</a> -->
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>  
+
+
+
+

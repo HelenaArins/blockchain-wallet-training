@@ -16,7 +16,11 @@ export class Block {
         hash: string,
         previousHash: string        
     ){
-        this.index = index;
+        if(previousHash === '00')
+            this.index =0;
+        else
+            this.index = index;
+            
         this.timestamp = timestamp;
         this.transactions = transactions;
         this.nonce = nonce;

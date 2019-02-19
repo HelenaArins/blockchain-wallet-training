@@ -1,6 +1,14 @@
 .valid{
     color: red;
+    text-align: center;
 }
 .invalid{
     color: green;
+    text-align: center;
 }
+
+*{
+    text-align: justify;
+}
+
+

@@ -9,6 +9,8 @@ import { SendTransactionComponent } from './send-transaction/send-transaction.co
 import { BalanceComponent } from './balance/balance.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BlockComponent } from './block/block.component';
+import { PendingTransactionsComponent } from './pending-transactions/pending-transactions.component';
+import { StartComponent } from './start/start.component';
 
 const GenesisProvider = () => {
   return new Block(1, 12312, [], 'GENESIS', '0ae1234', '00');
@@ -20,7 +22,9 @@ const GenesisProvider = () => {
     SendTransactionComponent,
     BalanceComponent,
     DashboardComponent,
-    BlockComponent
+    BlockComponent,
+    PendingTransactionsComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
