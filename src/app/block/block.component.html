@@ -1,4 +1,4 @@
-<table class="table table-hover"> 
+<table class="table table-hover" style="width:100%"> 
   <!-- <thead>
     <tr>
       <th scope="col">Index</th>
@@ -8,14 +8,14 @@
   </thead> -->
   <tbody>
     <tr>
-      <th scope="row"> {{block.index}}</th>
-      <td>{{block.hash}}</td>
-      <td>{{block.transactions}}</td>
+      <th id="indexID" scope="row"> {{block.index}}</th>
+      <td id="hashID" >{{block.hash}}</td>
+      <td id="transID" >{{block.transactions.length}}</td>
     </tr>
   </tbody>
   
 </table>
-  
+
   <!-- <div>
     <ul>
       <li>Index: {{block.index}}</li>

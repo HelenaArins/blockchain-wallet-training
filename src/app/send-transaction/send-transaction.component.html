@@ -1,8 +1,28 @@
-<div>
+<!-- <div>
   <label for="amount">  Amount  </label>
   <input #amount type="number" step='0.5'>  <br>
 
   <label for="recipient">  Recipiente  </label> 
   <input #recipient type="text" placeholder="Recipient ID"> <br>
   <button (click)="onSend(amount.value, recipient.value)">Send</button>
-</div>
+</div> -->
+
+<table class="table table-hover" id="t01"> 
+<!-- <table id="t01">  -->
+  <thead>
+    <tr>
+      <th id="th01" scope="col">Amount</th>
+      <th scope="col"><input id="i01" #amount type="number" step='0.5'>  <br> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="th02" scope="row"> Recipiente </th>
+      <td><input id="i02" #recipient type="text" placeholder="Recipient ID"> <br></td>
+    </tr>
+  </tbody>
+</table>
+
+<button id="btnSend" (click)="onSend(amount.value, recipient.value)">Send</button>
+
+
