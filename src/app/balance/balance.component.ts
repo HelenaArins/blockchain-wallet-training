@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Block, Transaction } from 'projects/blockchain/src/public_api';
+import { totalmem } from 'os';
 
 @Component({
   selector: 'app-balance',
@@ -13,7 +14,8 @@ export class BalanceComponent implements OnInit {
   public owner: string;
   public value = 0;
   public balance: {owner: string, value: number};
-  
+  public count =0;
+
   constructor() { }
 
   ngOnInit() {
@@ -28,24 +30,22 @@ export class BalanceComponent implements OnInit {
     this.owner = owner;
     const initial = new Transaction(0, 'system', owner);
 
-    const transactionReducer = (transaction: Transaction, total: Transaction) => {
-      if(transaction.recipient === owner){
-        total.amount = Number(transaction.amount) + Number(total.amount);
+    this.value = 0; 
+    for (const block of this.chain) {
+      for (const trans of block.transactions) {     
+        if(trans.recipient === owner){
+          this.value = Number(trans.amount) + Number(this.value);
+          console.log("1 if | trans.amount "+ trans.amount +" | this.value "+this.value);
+          this.count++;
+        }
+        else if(trans.sender === owner){
+          this.value = Number(trans.amount) + Number(this.value);
+          this.count++;
+        }
+        else if(trans.sender !== owner && trans.recipient !== owner && this.count === 0) {
+            this.value = 0;   
+        }
       }
-      if(transaction.sender === owner){
-        total.amount = Number(total.amount) + Number(transaction.amount);
-      }
-      return total;
     }
-
-    const chain = JSON.parse(JSON.stringify(this.chain));
-    const transactions = chain.map((block: Block) => {
-      return block.transactions.reduce(transactionReducer, initial);
-    });       
-    const balance = transactions.reduce(transactionReducer, initial);
-    this.value = balance.amount;
   }
-
-
-
 }

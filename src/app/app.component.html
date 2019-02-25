@@ -4,49 +4,31 @@
     'valid': isValid,
     'invalid': !isValid       
   }">
-  <!-- BlockChain  -->
   
    <img src="../assets/IMG/Blockchain-Logo-Blue6.png"
   alt="AAA" style="width:15%;height:15%;border:0;">
+  <img src="../assets/IMG/wipro-esig-2-loops (1).gif"
+  alt="AA" height="42" width="42">
 
    {{isValid}}</h2>
 </header>  
 
 <div class="card text-center">
-
-
-    <!-- <div id="h2ID"> -->
-
-  <!-- <img src="../assets/IMG/Blockchain-Logo-Blue6.png" 
-  class="rounded" alt="..."> -->
-<!-- 
-  <img src="../assets/IMG/Blockchain-Logo-Blue6.png" class="rounded float-left"
-  alt="AAA" > -->
-  <!-- style="float:center;width:40%;height:40%;border:0;"> -->
-  <!-- BlockChain  
-  <img src="../assets/IMG/wipro-esig-2-loops.gif" class="rounded float-right" alt="..."> -->
-  <!-- style="height: 40%; width: 20%;"> -->
-
-  <!-- </div> -->
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <button type="button" class="btn btn-primary" tooltip="Minerar novo Bloco" (click)="onMine()">Mine</button>
       <li class="nav-item">
-          <a class="nav-link" [routerLink]="['start']">Welcome</a>
+          <a class="nav-link" [routerLink]="['start']" tooltip="Tela Inicial"  >Welcome</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['send-transaction']">Send Transaction</a>
+        <a class="nav-link" [routerLink]="['send-transaction']" tooltip="Realizar uma transação"  >Send Transaction</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  [routerLink]="['dashboard']">Dashoard</a>
+        <a class="nav-link"  [routerLink]="['dashboard']" tooltip="Visualizar o Dashboard" >Dashboard</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['pending-transactions']" tooltip="Visualizar Transações Pendentes">Show Pending Transaction</a>
       </li>
-      
-  <!-- <img src="../assets/IMG/wipro-esig-2-loops.gif" class="rounded float-right"
-    alt="AAA" style="float:left;width:5%;height:5%;border:0;"> -->
-
     <div id=" ">
       <h5 class="card-title"  [routerLink]="['pending-transactions']">{{blockchain.pendingTransactions.length}} Pending Transaction</h5>
       <p class="card-text">     </p>
@@ -55,17 +37,10 @@
     </ul> 
   </div>
   <div class="card-body">
-
-    <!-- <button type="button" class="btn btn-link" [routerLink]="['pending-transactions']" > {{blockchain.pendingTransactions.length}} Pending Transaction </button> -->
-
-
-      <!-- <a href="#" class="btn btn-primary" [routerLink]="['send-transaction']">Send Transaction</a>
-      <a href="#" class="btn btn-primary" [routerLink]="['dashboard']">Dashoard</a> -->
-
     <router-outlet></router-outlet>
-
   </div>
 </div>  
+
 
 
 

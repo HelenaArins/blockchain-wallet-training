@@ -1,0 +1,13 @@
+
+.imagem{
+   position:relative;
+}
+
+.imagem-mascara {
+   width:400px; /* largura da imagem máscara */
+   height:400px; /* altura da imagem máscara */
+   position:absolute;
+   top:0;
+   left: 0;
+   background:url(imagens/w.gif) 0 0 no-repeat; /* imagem máscara */
+}

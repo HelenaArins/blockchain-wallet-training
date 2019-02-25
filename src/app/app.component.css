@@ -7,11 +7,6 @@
     text-align: center;
 }
 
-*{
-    text-align: justify;
-}
-
-
 #IDTrans{
     text-align: right;
     box-align: right;
@@ -24,4 +19,8 @@
 
 #IDTrans{
     text-align: right;
+}
+
+*{
+    text-align: justify;
 }

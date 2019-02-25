@@ -8,13 +8,10 @@ import { BlockchainService, Blockchain, Transaction } from 'projects/blockchain/
 })
 export class PendingTransactionsComponent implements OnInit {
 
-    // title = 'blockchain-wallet-training';
     public blockchain: Blockchain;
-    // public isValued: boolean;
   
     constructor(@Inject(BlockchainService) private blockchainServie: BlockchainService){
       this.blockchain = this.blockchainServie.blockchain;
-      // this.isValued = this.blockchain.isValidChain(this.blockchain);
     }
 
   ngOnInit() {
